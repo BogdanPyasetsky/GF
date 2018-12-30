@@ -10,12 +10,23 @@ namespace GF
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
+            PBNumber a = new PBNumber("01001100");
+            PBNumber b = new PBNumber("1010");
+            /*var v = PBOperatoins.Mul(a, b);                    
+            var c1 = a.Shift(3);
+            var c2 = a.Shift(1);
+            var c = PBOperatoins.Add(c1, c2);
+            Console.WriteLine(c1.BitSTR());
+            Console.WriteLine("  "+c2.BitSTR());
+            Console.WriteLine(c.BitSTR());
+            Console.WriteLine(v.BitSTR());
+            */
+            var c = a.CutZeros();
+            Console.WriteLine(c.BitSTR());
             Console.ReadKey();
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+                        
         }
+
+
     }
 }
