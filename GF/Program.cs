@@ -10,13 +10,17 @@ namespace GF
     {
         static void Main(string[] args)
         {
-            PBNumber a = new PBNumber("01001100");
-            PBNumber b = new PBNumber("1010");
-            int l = a.GetLength() - b.GetLength();
-            var c = b.SetLength(8);
+            PBNumber a = new PBNumber("010011001");
+            PBNumber b = new PBNumber("10");
+            //var c = PBOperatoins.Pow(a, b);
+            //var c = PBOperatoins.Sqr(b);
+            Console.WriteLine(a.GetLength());
+            for (int i = a.GetLength() - 1; i > 1; i--)
+            {
+                Console.Write(a.GetBit(i) + " | ");
+            }
+            Console.WriteLine(a.GetBit(0));
             
-            Console.WriteLine(a.BitSTR());
-            Console.WriteLine(c.BitSTR());
             Console.ReadKey();
                         
         }
