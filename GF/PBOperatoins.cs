@@ -61,6 +61,7 @@ namespace GF
                 if(b.GetBit(i) == 1)
                     res = Add(res, a.Shift(i));
             }
+            res = res.CutZeros();
             while (res.GetLength() >= glen)
             {
                 res = res.CutZeros();
@@ -82,6 +83,7 @@ namespace GF
             {
                 res.SetBit(a.GetBit(i), 2 * i);
             }
+            res = res.CutZeros();
             while (res.GetLength() >= glen)
             {
                 res = res.CutZeros();
@@ -95,19 +97,20 @@ namespace GF
         
         public static PBNumber Pow(PBNumber a, PBNumber n)
         {
-            PBNumber res = new PBNumber("1");
-            res = res.SetLength(a.GetLength());
+            PBNumber res = new PBNumber();
+            res = GetONE();
             PBNumber gen = new PBNumber("100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101011");
             int glen = gen.GetLength(); //generator's string length
             int l;                      // length difference
-            for (int i = n.GetLength() - 1; i > 1; i--)
+            for (int i = n.GetLength() - 1; i > 0; i--)
             {
                 if (n.GetBit(i) == 1)
-                    res = Mul(res, a);
+                    res = Mul(a, res);
                 res = Sqr(res);
             }
             if (n.GetBit(0) == 1)
-                res = Mul(res, a);
+                res = Mul(a, res);
+            res = res.CutZeros();
             while (res.GetLength() >= glen)
             {
                 res = res.CutZeros();
