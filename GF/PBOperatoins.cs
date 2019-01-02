@@ -128,5 +128,18 @@ namespace GF
             var res = Pow(a, power);
             return res;
         }
+
+        public static PBNumber Trace(PBNumber a)
+        {
+            PBNumber res = new PBNumber();
+            PBNumber temp = new PBNumber();
+            temp = a; res = a;
+            for (int i = 1; i < 431; i++)
+            {
+                temp = Sqr(temp);
+                res = Add(res, temp);
+            }
+            return res;
+        }
     }
 }
