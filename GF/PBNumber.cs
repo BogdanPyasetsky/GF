@@ -73,5 +73,15 @@ namespace GF
                 res.SetBit(num[i], i);
             return res;
         }
+
+        public PBNumber SetLength(int t)
+        {
+            PBNumber res = new PBNumber(t);
+            for(int i = 0; i < num.Length; i++)
+            {
+                res.SetBit(num[i], i);
+            }
+            return res;
+        }
     }
 }

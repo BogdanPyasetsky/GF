@@ -12,16 +12,10 @@ namespace GF
         {
             PBNumber a = new PBNumber("01001100");
             PBNumber b = new PBNumber("1010");
-            /*var v = PBOperatoins.Mul(a, b);                    
-            var c1 = a.Shift(3);
-            var c2 = a.Shift(1);
-            var c = PBOperatoins.Add(c1, c2);
-            Console.WriteLine(c1.BitSTR());
-            Console.WriteLine("  "+c2.BitSTR());
-            Console.WriteLine(c.BitSTR());
-            Console.WriteLine(v.BitSTR());
-            */
-            var c = a.CutZeros();
+            int l = a.GetLength() - b.GetLength();
+            var c = b.SetLength(8);
+            
+            Console.WriteLine(a.BitSTR());
             Console.WriteLine(c.BitSTR());
             Console.ReadKey();
                         

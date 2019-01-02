@@ -17,9 +17,7 @@ namespace GF
             int temp;
             for (int i = 0; i < Math.Min(len1, len2); i++)
             {
-                temp = a.GetBit(i) + b.GetBit(i);
-                if (temp == 2)
-                    temp = 0;
+                temp = a.GetBit(i) ^ b.GetBit(i);
                 res.SetBit(temp, i);
             }
             if (len1 > len2)
@@ -41,19 +39,21 @@ namespace GF
             int len = a.GetLength();
             PBNumber res = new PBNumber();
             PBNumber gen = new PBNumber("100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101011");
+            int glen = gen.GetLength(); //generator string length
+            int l;                      // length difference
             for (int i = 0; i < len; i++)
             {
                 if(b.GetBit(i) == 1)
                     res = Add(res, a.Shift(i));
             }
-            if (res.GetLength() < gen.GetLength())
-                return res;
-            else
+            while (res.GetLength() >= glen)
             {
-
+                res = res.CutZeros();
+                l = res.GetLength() - glen;
+                res = Add(res, gen.Shift(l));
+                res = res.CutZeros();
             }
-
-            
+            res = res.SetLength(glen - 1);            
             return res;
         }
     }
