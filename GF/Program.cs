@@ -23,6 +23,7 @@ namespace GF
             }
             Console.WriteLine(b.BitSTR());
             Console.WriteLine(k);
+
             Console.ReadKey();
                         
         }
