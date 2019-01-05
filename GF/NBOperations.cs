@@ -58,6 +58,14 @@ namespace GF
             return res;
         }
 
+        public static NBNumber SqrPow(NBNumber a, int k)
+        {
+            NBNumber res = a;
+            for(int i = 0; i < k; i++)
+                res = Sqr(res);
+            return res;
+        }
+
         public static int Trace(NBNumber a)
         {
             int res = a.GetBit(0);
@@ -133,6 +141,26 @@ namespace GF
             }
             if (n.GetBit(n.GetLength() - 1) == 1)
                 res = Mul(res, a);
+            return res;
+        }
+        
+        public static NBNumber Reverce(NBNumber a)
+        {
+            NBNumber res = new NBNumber(a.GetLength());
+            NBNumber b = a;
+            int k = 1;
+            var bin = Convert.ToString(a.GetLength() - 1, 2);
+            for (int i = 1; i < bin.Length; i++)
+            {
+                b = Mul(SqrPow(b,k),b);
+                k = 2 * k;
+                if(bin[i] == '1')
+                {
+                    b = Mul(Sqr(b), a);
+                    k = k + 1;
+                }
+            }
+            res = Sqr(b);
             return res;
         }
     }
