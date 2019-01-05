@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NBNumber.cs" />
+    <Compile Include="NBOperations.cs" />
+    <Compile Include="NBOperationTests.cs" />
     <Compile Include="PBNumber.cs" />
     <Compile Include="PBOperationTests.cs" />
     <Compile Include="PBOperatoins.cs" />
